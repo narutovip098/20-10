@@ -1,0 +1,207 @@
+/* Basic styles for the page */
+body {
+    background: radial-gradient(circle, #1c1c1c, #000);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    margin-top: 50px;
+}
+
+/* Heading styles */
+h1 {
+    color: #ff6f61;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+#bloomButton {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    color: #fff;
+    background: linear-gradient(45deg, #ff6f61, #ff4500);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#bloomButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.7);
+}
+
+/* Hide rose and petals initially */
+#roseContainer {
+    display: none; /* Initially hidden */
+}
+
+/* Rose animation styles */
+.rose-container {
+    margin: 50px auto;
+    position: relative;
+    width: 150px;
+    height: 300px;
+    animation: grow 3s forwards;
+}
+
+.rose.stem {
+    width: 4px;
+    height: 250px;
+    background: linear-gradient(to bottom, #2e8b57, #006400);
+    position: absolute;
+    bottom: 0;
+    left: 73px;
+    animation: growStem 2s forwards;
+}
+
+.rose.flower {
+    position: absolute;
+    bottom: 230px;
+    left: 10px;
+    width: 130px;
+    height: 130px;
+    opacity: 0;
+    animation: bloom 3s 1s forwards;
+}
+
+/* Realistic petals */
+.petal {
+    width: 60px;
+    height: 80px;
+    background: radial-gradient(circle, #ff0000, #8b0000);
+    border-radius: 50% 50% 40% 40%;
+    position: absolute;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transform-origin: bottom center;
+    animation: petalMovement 6s infinite ease-in-out;
+}
+
+.petal1 { top: 0; left: 35px; transform: rotate(10deg); }
+.petal2 { top: 20px; left: 15px; transform: rotate(-20deg); }
+.petal3 { top: 20px; right: 15px; transform: rotate(20deg); }
+.petal4 { bottom: 0; left: 35px; transform: rotate(-10deg); }
+.petal5 { bottom: 15px; left: 0; transform: rotate(-35deg); }
+.petal6 { bottom: 15px; right: 0; transform: rotate(35deg); }
+.petal7 { top: 40px; left: 5px; transform: rotate(-50deg); }
+.petal8 { top: 40px; right: 5px; transform: rotate(50deg); }
+
+.center {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #ff4500, #8b0000);
+    border-radius: 50%;
+    position: absolute;
+    top: 45px;
+    left: 45px;
+}
+
+/* Leaves */
+.leaves {
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+}
+
+.leaf {
+    width: 80px; /* Wider leaf */
+    height: 50px; /* Adjust height for elliptical shape */
+    background: linear-gradient(to bottom, #4caf50, #2e7d32); /* Lighter to darker green gradient */
+    position: absolute;
+    border-radius: 50%; /* Full elliptical shape */
+    animation: leafMovement 4s infinite ease-in-out;
+    transform-origin: center; /* Rotate around center for a natural look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Adjust leaf positions and rotation for a more realistic look */
+.leaf1 {
+    transform: rotate(-30deg);
+    left: -20px; /* Position leaf 1 slightly to the left */
+}
+
+.leaf2 {
+    transform: rotate(30deg);
+    right: -20px; /* Position leaf 2 slightly to the right */
+}
+
+/* Glowing effect */
+.glow {
+    position: absolute;
+    bottom: 170px;
+    left: 25px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255, 69, 0, 0.5);
+    filter: blur(25px);
+    animation: pulsate 2s infinite alternate;
+}
+
+/* Falling petals */
+.falling-petals {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.falling-petal {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    background: radial-gradient(circle, #ff6347, #8b0000);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall 6s linear infinite;
+}
+
+.falling-petal.petal1 { left: 20%; animation-delay: 0s; }
+.falling-petal.petal2 { left: 50%; animation-delay: 1s; }
+.falling-petal.petal3 { left: 80%; animation-delay: 2s; }
+
+/* Animation keyframes */
+@keyframes growStem {
+    0% { height: 0; }
+    100% { height: 250px; }
+}
+
+@keyframes bloom {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes petalMovement {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes leafMovement {
+    0%, 100% { transform: rotate(0); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulsate {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes fall {
+    0% { top: -10%; transform: rotate(0deg); }
+    100% { top: 110%; transform: rotate(360deg); }
+}
